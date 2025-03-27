@@ -20,7 +20,22 @@
 `sudo crontab -e` and add:
 ```
 
-- 
+- add the following:
+
+```bash
+
+#Run system inventory every Sunday at midnight
+0 0 ** 0 /usr/local/bin/system_inventory.sh >> /var/log/system_inventory.log 2>&1
+
+# Run network monitoring every hour
+0 * * * * /usr/local/bin/network_monitor.sh >> /var/log/network_monitor.log 2>&1
+
+# Run backups daily at 2 AM
+0 2 * * * /usr/local/bin/backup_manager.sh >> /var/log/backup_manager.log 2>&1
+
+# Check for system updates daily at 3 AM
+0 3 * * * /usr/local/bin/system_update.sh >> /var/log/system_updates.log 2>&1
+```
 
 
 
