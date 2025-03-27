@@ -1,6 +1,7 @@
 # Automating system maintainance with Cron Jobs
 
 `Cron` is used to automate key system tasks, ensuring system health,security and efficiency.
+
 ---
 
 ## ** Scheduled Tasks**
@@ -12,3 +13,15 @@
 | System Updates Check    | Daily (3 AM)        | `/usr/local/bin/system_update.sh`     |
 
 ## **Setting up Cron Jobs**
+
+- to schedule the tasks use:
+
+``` bash
+`sudo crontab -e` and add:
+```
+
+- 
+
+
+
+
