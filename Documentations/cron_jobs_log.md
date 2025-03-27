@@ -38,6 +38,61 @@
 ```
 ---
 
-# 
+## **Logging setup for scripts**
+
+Each scripts has this structured logging with timestamps:
+ 
+```bash
+LOG_FILE = "/var/log/script_name.log"
+
+log_message() {
+  local LEVEL = "$1"
+  local MESSAGE = "$2"
+  echo "$(date + %Y-%m-%d %H:%M:%S') [$LEVEL] $MESSAGE" | tee -a "$LOG_FILE"
+}
+log_message "INFO" "Script started"
+log_message "ERROR" "Something went wrong"
+log_message "SUCCESS" "Script completed successfully"
+```
+---
+
+## **Log Rotation**
+
+The following configuration would:
+
+1. keep logs for 4 weeks
+2. compress old logs
+3. ignore empty logs
+
+- install `logrotate`:
+
+```bash
+/var/log*.log {
+  weekly
+  rotate 4
+  compress
+  missingok
+  notifempty
+}
+```
+---
+
+## **Email Alerts for critical events**
+
+To send Email notifications for failure, this was added to the scripts:
+
+```bash
+send_email_alerts() {
+local SUBJECT="CRITICAL ERROR: $1"
+    local BODY="Timestamp: $(date)\n\n$2"
+    echo -e "$BODY" | mail -s "$SUBJECT" admin@example.com
+}
+```
+---
+
+## sample output
+
+`output from my kali machine`
+
 
 
