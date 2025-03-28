@@ -7,7 +7,7 @@ This task sets up two Linux VMs: an admin server and a target server. It covers 
 - Target Server (Kali Linux)
 
 
-## Steps
+# Steps
 
 ## Create User Managment
 - create user on the target server
@@ -109,6 +109,18 @@ sudo mount /dev/sdb1 /mnt/data
 ```bash
 ps aux | grep <service>
 htop
+```
+
+- Kill a Process
+
+```bash
+sudo kill -9 <PID>
+```
+
+- Set process
+
+```bash
+nice -n 10 samplescript.sh
 ```
 
 
