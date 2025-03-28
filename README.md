@@ -6,6 +6,7 @@ This mini-project demonstrates essential skills in Linux administration, Git, Ba
 ## Project Structure
 
 project-root/
+
 │── scripts/            # Bash automation scripts
 │── config/             # Configuration files
 │── monitoring/         # Network and system monitoring scripts
