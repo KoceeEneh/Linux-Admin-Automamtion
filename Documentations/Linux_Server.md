@@ -129,6 +129,8 @@ htop
 - Output
 ``` <img width="867" alt="Screenshot 2025-03-29 at 22 28 29" src="https://github.com/user-attachments/assets/9284eb85-3e7d-443b-adbe-00f7aba047db" /> ```
 
+``` <img width="1440" alt="Screenshot 2025-03-29 at 22 28 54" src="https://github.com/user-attachments/assets/ed6953a8-5edc-4424-b100-5195bee5c355" /> ```
+
 - Kill a Process
 
 ```bash
