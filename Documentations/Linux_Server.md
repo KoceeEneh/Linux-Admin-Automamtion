@@ -126,16 +126,22 @@ sudo mount /dev/sdb1 /mnt/data
 ps aux | grep <service>
 htop
 ```
-- Output
-``` <img width="867" alt="Screenshot 2025-03-29 at 22 28 29" src="https://github.com/user-attachments/assets/9284eb85-3e7d-443b-adbe-00f7aba047db" /> ```
 
-``` <img width="1440" alt="Screenshot 2025-03-29 at 22 28 54" src="https://github.com/user-attachments/assets/ed6953a8-5edc-4424-b100-5195bee5c355" /> ```
+- Output A
+<img width="867" alt="Screenshot 2025-03-29 at 22 28 29" src="https://github.com/user-attachments/assets/9284eb85-3e7d-443b-adbe-00f7aba047db" /> 
+
+ - Output B
+<img width="1440" alt="Screenshot 2025-03-29 at 22 28 54" src="https://github.com/user-attachments/assets/ed6953a8-5edc-4424-b100-5195bee5c355" /> 
+
 
 - Kill a Process
 
 ```bash
 sudo kill -9 <PID>
 ```
+- Output
+
+<img width="697" alt="Screenshot 2025-03-29 at 22 39 16" src="https://github.com/user-attachments/assets/834eaa30-36c0-4b3d-9ec1-8111aeb187bc" />
 
 - Set process
 
