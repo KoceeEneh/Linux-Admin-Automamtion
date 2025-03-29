@@ -43,6 +43,9 @@ ssh-copy-id sysadmin@<TARGET_SERVER_IP>
 sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
 sudo systemctl restart ssh
 ```
+- output
+  
+<img width="700" alt="Screenshot 2025-03-29 at 21 32 19" src="https://github.com/user-attachments/assets/347e8229-0a18-4596-81fd-867031894394" />
 
 ## Package Management
 
