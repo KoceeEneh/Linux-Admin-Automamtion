@@ -95,6 +95,10 @@ sudo systemctl status ssh
 sudo systemctl stop --now ssh
 sudo systemctl disable --now ssh
 ```
+- Output
+
+<img width="741" alt="Screenshot 2025-03-29 at 22 22 15" src="https://github.com/user-attachments/assets/fb6cfa22-c775-4a53-8297-eca7af10fb72" />
+
 
 ## File System Management
 
@@ -110,6 +114,9 @@ lsblk
 sudo mkdir /mnt/data
 sudo mount /dev/sdb1 /mnt/data
 ```
+- output
+
+<img width="700" alt="Screenshot 2025-03-29 at 22 25 51" src="https://github.com/user-attachments/assets/55816397-a3b2-4bd5-99f1-bd9fd5e02db1" />
 
 ## Process Management
 
@@ -119,6 +126,8 @@ sudo mount /dev/sdb1 /mnt/data
 ps aux | grep <service>
 htop
 ```
+- Output
+``` <img width="867" alt="Screenshot 2025-03-29 at 22 28 29" src="https://github.com/user-attachments/assets/9284eb85-3e7d-443b-adbe-00f7aba047db" /> ```
 
 - Kill a Process
 
