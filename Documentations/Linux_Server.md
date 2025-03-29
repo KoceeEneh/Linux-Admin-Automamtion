@@ -69,6 +69,11 @@ dpkg --list | grep apache
 sudo apt remove <package> -y
 ```
 
+- Output
+
+<img width="700" alt="Screenshot 2025-03-29 at 21 44 18" src="https://github.com/user-attachments/assets/93b9e82c-d712-49dc-a5bd-0f25c5ebb2a6" />
+
+
 ## Service Management
 
 - Enable & Start Services
