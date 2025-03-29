@@ -45,7 +45,8 @@ sudo systemctl restart ssh
 ```
 - output
   
-<img width="700" alt="Screenshot 2025-03-29 at 21 32 19" src="https://github.com/user-attachments/assets/347e8229-0a18-4596-81fd-867031894394" />
+<img width="701" alt="Screenshot 2025-03-29 at 21 38 20" src="https://github.com/user-attachments/assets/690c033f-458c-4121-9afe-8379c9a95a4f" />
+
 
 ## Package Management
 
