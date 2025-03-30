@@ -72,6 +72,9 @@ sudo ufw allow 443/tcp  # HTTPS
 sudo ufw enable
 sudo ufw status
 ```
+- output
+
+<img width="701" alt="Screenshot 2025-03-30 at 02 58 59" src="https://github.com/user-attachments/assets/643aa16c-9286-4fcd-a136-d8c4f950f4a5" />
 
 ## 4. Set Up a Private Network Between Servers
 
