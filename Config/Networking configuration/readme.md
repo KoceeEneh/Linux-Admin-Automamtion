@@ -5,19 +5,37 @@ This task provides step-by-step instructions for configuring basic networking be
 ## 1. Set Up Static IP Addressing
 
 1. Identify network interfaces:
+   
    ```bash
-   ip a
+   nmcli device status
+
    ```
-2. Edit the Netplan config file:
-   ```bash
-   sudo nano /etc/netplan/01-netcfg.yaml
+- Output
+<img width="701" alt="Screenshot 2025-03-30 at 01 20 49" src="https://github.com/user-attachments/assets/0fb3cefd-1e9f-43e9-b2ef-e027d4a6445d" />
+
+2. Set up a ststic IP address
+
+```bash
+mcli connection modify "Wired connection 1" ipv4.addresses 192.168.1.200/24
+nmcli connection modify "Wired connection 1" ipv4.gateway 192.168.1.1
+nmcli connection modify "Wired connection 1" ipv4.dns "8.8.8.8 8.8.4.4"
+nmcli connection modify "Wired connection 1" ipv4.method manual
+nmcli connection up "Wired connection 1"
    ```
-3. The configuration file is in the repo
+- Output
   
-4. Apply changes:
-   ```bash
-   sudo netplan apply
-   ```
+  <img width="783" alt="Screenshot 2025-03-30 at 01 15 47" src="https://github.com/user-attachments/assets/3ff9d765-b506-47d3-8562-423dbd047490" />
+
+
+3. Verify the Static IP Configuration
+
+```bash
+ip a
+```
+- Output
+  
+<img width="700" alt="Screenshot 2025-03-30 at 01 18 08" src="https://github.com/user-attachments/assets/68244612-7bbf-4f5f-88bf-0bec33225eb1" />
+
 
 ## 2. Configure SSH with Key-Based Authentication
 1. Generate SSH keys on your local machine:
