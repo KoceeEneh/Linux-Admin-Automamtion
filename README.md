@@ -1,7 +1,7 @@
 # Linux-Admin-Automamtion
 
 ## Overview
-This mini-project demonstrates essential skills in Linux administration, Git, Bash scripting, and networking. The goal is to create automation tools for managing a small Linux server environment, track changes using Git, and monitor system performance efficiently.
+This mini-project demonstrates essential skills in Linux administration, Git, Bash scripting, and networking. The goal is to create automation tools for managing a small Linux server environment, track changes using Git, and monitor system performance efficiently. it contains detailed documentations of whole process
 
 ## Project Structure
 ```
