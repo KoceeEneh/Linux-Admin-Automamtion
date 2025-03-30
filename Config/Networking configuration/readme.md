@@ -16,9 +16,10 @@ This task provides step-by-step instructions for configuring basic networking be
 2. Set up a ststic IP address
 
 ```bash
-mcli connection modify "Wired connection 1" ipv4.addresses 192.168.1.200/24
-nmcli connection modify "Wired connection 1" ipv4.gateway 192.168.1.1
-nmcli connection modify "Wired connection 1" ipv4.dns "8.8.8.8 8.8.4.4"
+mcli connection modify "Wired connection 1" ipv4.addresses 172.20.10.200/24
+nmcli connection modify "Wired connection 1" ipv4.gateway 172.20.10.1
+nmcli connection modify "Wired connection 1" ipv4.dns "8.8.8.8"
+nmcli connection modify "Wired connection 1" +ipv4.dns "8.8.4.4"
 nmcli connection modify "Wired connection 1" ipv4.method manual
 nmcli connection up "Wired connection 1"
    ```
