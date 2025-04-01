@@ -87,5 +87,5 @@ case $choice in
     5) secure_ssh && disable_services && update_system && implement_security_policies ;;
     6) exit ;;
     *) echo "Invalid choice. Exiting..." && exit 1 ;;
-    
+
 esac
