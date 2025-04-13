@@ -1,91 +1,91 @@
 #!/bin/bash
-#function that cheks if commands were successful
+
+# Function that checks if commands were successful
 check_command() {
     if [ $? -eq 0 ]; then
-        echo "Command executed successfully."
+        echo "✅ $1 succeeded."
     else
-        echo "Command failed."
+        echo "❌ $1 failed."
+        exit 1
     fi
 }
 
+# Function to secure SSH
+secure_ssh() {
+    echo "Configuring SSH security..."
 
-#function to secure SSH
-secure_ssh(){
-    echo "configuring ssh..."
-    sudo sed -i 's/^#permitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
-    sudo sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
-    sudo sed -i 's/^#X11Forwarding.*/X11Forwarding no/' /etc/ssh/sshd_config
-    echo "AllowUsers your-secure-user" | sudo tee -a /etc/ssh/sshd
+    sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+    sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+    sudo sed -i 's/^#\?X11Forwarding.*/X11Forwarding no/' /etc/ssh/sshd_config
+
+    read -p "Enter the allowed SSH user (e.g., adminuser): " allowed_user
+    echo "AllowUsers $allowed_user" | sudo tee -a /etc/ssh/sshd_config
+
     sudo systemctl restart ssh
-    check_command "securing SSH settings"
-    echo " SSH has been configured"
-
+    check_command "Securing SSH settings"
+    echo "✅ SSH has been configured securely."
 }
 
-
-#function to disable unecessary service
+# Function to disable unnecessary services
 disable_services() {
-    echo "Disabling unecessary services..."
-    sudo systemctl disable --now avahi-daemon.service 2>/dev/null
-    sudo systemctl disable --now bluetooth.service 2>/dev/null
-    sudo systemctl disable --now cups.service 2>/dev/null
-    sudo systemctl disable --now rpcbind.service 2>/dev/null
-    sudo systemctl disable --now nfs-server.service 2>/dev/null
-    check_command "Disabling unecessary services"
-    echo " uneceesary services have been disabled"
+    echo "Disabling unnecessary services..."
+    for service in avahi-daemon bluetooth cups rpcbind nfs-server; do
+        sudo systemctl disable --now "$service" 2>/dev/null
+    done
+    check_command "Disabling unnecessary services"
+    echo "✅ Unnecessary services have been disabled."
 }
 
-
-#function to update system packages
+# Function to update system packages
 update_system() {
-    echo "updating packages..."
+    echo "Updating system packages..."
     sudo apt update && sudo apt upgrade -y
-    check_command "updating system packages"
-    echo " System packages have been updated"
-
+    check_command "Updating system packages"
+    echo "✅ System packages have been updated."
 }
 
-
-#function to apply security policies 
+# Function to implement security policies
 implement_security_policies() {
-    echo "applying security policies..."
-    sudo apt install ufw fail2ban auditd -y
-    check_command "installing security tools"
+    echo "Applying security policies..."
 
+    sudo apt install ufw fail2ban auditd -y
+    check_command "Installing security tools"
+
+    # Configure UFW
     sudo ufw default deny incoming
     sudo ufw default allow outgoing
     sudo ufw allow ssh
-    sudo ufw enable
-    check_command "configuring firewall"
+    sudo ufw --force enable
+    check_command "Configuring UFW firewall"
 
+    # Enable fail2ban
     sudo systemctl enable --now fail2ban
-    check_command "enabling fail2ban"
+    check_command "Enabling fail2ban"
 
+    # Enable auditd
     sudo systemctl enable --now auditd
-    check_command "enabling auditd"
+    check_command "Enabling auditd"
 
-    echo "Security policies have been applied"
-
+    echo "✅ Security policies have been applied."
 }
 
-
-#displaying menu
-echo "Select an option to harden your device:"
+# Displaying menu
+echo ""
+echo "========= System Hardening Menu ========="
 echo "1. Secure SSH"
-echo "2. Disable Unecessary Services"
+echo "2. Disable Unnecessary Services"
 echo "3. Update System Packages"
 echo "4. Implement Security Policies"
 echo "5. Run All Hardening Options"
 echo "6. Exit"
 read -p "Enter choice: " choice
 
-case $choice in 
+case $choice in
     1) secure_ssh ;;
     2) disable_services ;;
     3) update_system ;;
     4) implement_security_policies ;;
     5) secure_ssh && disable_services && update_system && implement_security_policies ;;
-    6) exit ;;
-    *) echo "Invalid choice. Exiting..." && exit 1 ;;
-
+    6) echo "Exiting..." && exit 0 ;;
+    *) echo "❌ Invalid choice. Exiting..." && exit 1 ;;
 esac
